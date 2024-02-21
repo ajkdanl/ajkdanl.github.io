@@ -15,10 +15,10 @@ about:
       href: https://instagram.com
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/ajkdanl
     - icon: file-earmark-pdf
       text: Resumé
-      href: https://GITHUB_USERNAME.github.io/resume-example.pdf
+      href: https://ajkdanl.github.io/Resume_2_2024.pdf
     - icon: mailbox
       text: Email
       href: mailto:ajk30@geneseo.edu
@@ -36,7 +36,7 @@ Minors in Data Analytics and Finance
 
 ## Experience
 
-Technical Accounting Consulting Intern| RSM | June 2023 - Aug 2023
+Technical Accounting Consulting Intern| RSM | June 2023 - Aug 2023 <br>
 Pathways Audit Intern | Department of Defense, DCAA | December 2021 - April 2023
 
 
