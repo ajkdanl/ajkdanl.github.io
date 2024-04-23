@@ -1,0 +1,488 @@
+---
+title: Homework 3
+subtitle: Advanced Data Visualization
+author: 'Alexis Kruzicki'
+date: 3/28/2024
+categories: [ code, data-visualization]
+
+
+execute: 
+  warning: false
+  echo: false
+  fig-width: 9
+  fig-align: center
+---
+
+<br>
+
+## Loading R packages
+
+
+```{r setup}
+#| include: false
+library(knitr)
+library(tidyverse)
+library(socviz)
+library(ggthemes)
+library(ggrepel)
+library(ggtext)
+library(hrbrthemes)
+library(gapminder)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray")))
+```
+
+
+
+```{r}
+#| echo: true
+library(knitr)
+library(tidyverse)
+library(socviz)
+library(ggthemes)
+library(ggrepel)
+library(ggtext)
+library(hrbrthemes)
+library(gapminder)
+```
+
+
+<br>
+
+# Question 1
+
+The following data is for Question 1:
+
+```{r}
+#| echo: true
+gapminder <- gapminder::gapminder
+```
+
+```{r}
+#| echo: false
+#| results: asis
+rmarkdown::paged_table(gapminder) 
+```
+
+<br>
+
+## Q1a
+- Replicate the following ggplot.
+  - Use the color `#0072B2` for dots.
+
+*Answer*:
+```{r}
+#| fig-width: 8
+#| fig-height: 16
+#| warning: false
+continents <-c("Africa", "Americas", "Asia", "Europe")
+
+gapminder_1 <- gapminder::gapminder|>
+  filter(year==2007) %>% 
+  filter(continent %in% continents)
+
+# gapminder_1 <- gapminder_1|>
+#   filter(continent==continents)
+
+ggplot (gapminder_1, 
+        aes(x= lifeExp, 
+            y = reorder(country, lifeExp))) + 
+  geom_point(color="#0072B2") + 
+  geom_text(aes(label=lifeExp), hjust = -.25) +
+  facet_wrap(continent~.,
+                           scales = "free_y"                                                                      ) +
+  xlim(c(40,110))
+
+
+
+```
+
+<br><br>
+
+## Q1b 
+- Make a simple comment on the visualization result.
+
+*Answer*:
+
+Europe has the overall highest life expectency
+
+<br><br><br>
+
+# Question 2
+
+The following data is for Question 2:
+
+```{r}
+#| echo: true
+n_tweets_long <- read_csv(
+  'https://bcdanl.github.io/data/n_tweets_long.csv')
+```
+
+```{r}
+#| echo: false
+#| results: asis
+rmarkdown::paged_table(n_tweets_long) 
+```
+
+<br>
+
+## Q2a 
+
+- Replicate the following ggplot.
+
+  - The following describes the `type` values:
+    - `n_ot_us`: Number of US tweets 
+    - `n_ot_wrld`: Number of worldwide tweets 
+    - `n_rt_lk_us`: Number of US retweets & likes
+    - `n_rt_lk_wrld`: Number of worldwide retweets & likes 
+  - Use the colors, `maroon` and `#428bca` properly.
+  
+
+
+*Answer*:
+```{r}
+#| fig-height: 8
+#| eval: false
+
+
+# d <- data.frame(x=1:10, y=1/(10:1))
+# ggplot(d, aes(x= year, y=)) + geom_bar(stat="identity")
+
+# library(ggplot2)
+
+n_tweets <- n_tweets_long %>% 
+  filter(type == 'n_ot_us' | type == 'n_ot_wrld' ) %>% 
+  mutate(type = ifelse(type == 'n_ot_us', "US", "Worldwide"))
+
+
+n_retweets_lks <- n_tweets_long %>% 
+   filter(type == 'n_rt_lk_us' | type == 'n_rt_lk_wrld' ) %>% 
+  mutate(type = ifelse(type == 'n_rt_lk_us', "US", "Worldwide"))
+  
+
+# Create the ggplot bar graph
+ggplot(n_tweets, aes(x = year, y = n)) +
+  geom_bar(aes(fill = type), stat = "identity", position = "dodge") +
+  geom_line(data = n_retweets_lks, aes(color = type),
+            linewidth=3) +
+  geom_point(data = n_retweets_lks, size=3) +
+  scale_fill_manual(values = c("maroon", "#428bca")) +
+  scale_color_manual(values = c("maroon", "#428bca")) +
+  scale_x_continuous(breaks = 2012:2017) +
+  labs(x = "Year",
+       y = "Number of Tweets, Retweets & Likes\n(in thousand)",
+       fill="Tweets", color="Retweets and likes") +
+  guides(fill = guide_legend(reverse = TRUE,
+                             label.position = "bottom",
+                             keywidth = 3,
+                             nrow = 2,
+                             order = 1),
+         color = guide_legend(reverse = TRUE,
+                             label.position = "bottom",
+                             keywidth = 3,
+                             nrow = 2,
+                             order = 2)) +
+  theme_minimal()+ 
+  theme(legend.position = "top")
+
+
+```
+
+<br><br>
+
+## Q2b. 
+
+- Make a simple comment on the visualization result.
+
+As the years increase the number of tweets, reweets and likes increase greatly. With worldwide having a larger increase.
+
+<br><br><br>
+
+# Question 3
+
+The following data set is for Question 3:
+
+```{r}
+#| echo: true
+electricity <- read_csv(
+  'https://bcdanl.github.io/data/electricity-usa-chn.csv')
+```
+
+```{r}
+#| echo: false
+#| results: asis
+rmarkdown::paged_table(electricity) 
+```
+
+<br>
+
+
+```{r}
+electricity %>% 
+  count(iso3c)
+
+electricity <- electricity %>% 
+  mutate(iso3c = ifelse(iso3c == 'CHN', 
+                        "China",
+                        "United States"))
+```
+
+
+```{r}
+electricity %>% 
+  count(iso3c)
+
+```
+
+
+## Q3a
+
+- Replicate the following ggplot.
+
+
+
+*Answer*:
+```{r}
+#| fig-height: 9
+#| warning: false
+ggplot(data = electricity) +
+  geom_line(aes(x = year,
+                y = value ,
+                color = energy),
+            linewidth=3) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 1985) +
+facet_wrap(iso3c~.,) +
+scale_colour_viridis_d(option = "plasma")+
+  theme(legend.position = "top")+
+   labs(x = "Year",
+       y = "Electricity Generartion\n(TWh)",
+        color="Energy")+
+  guides(color = guide_legend(label.position = "bottom",
+                keywidth = 5))
+                             
+```
+
+<br><br>
+
+
+
+## Q3b
+
+- Replicate the following ggplot.
+
+
+*Answer*:
+```{r}
+#| fig-height: 9
+#| warning: false
+
+electricity <- electricity %>% 
+  group_by(iso3c, year) %>% 
+  mutate(pct = value / sum(value))
+
+
+ggplot(data = electricity) +
+  geom_line(aes(x = year,
+                y = pct ,
+                color = energy),
+            linewidth=3) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 1985) +
+facet_wrap(iso3c~.,) +
+scale_colour_viridis_d()+
+  theme(legend.position = "top")+
+   labs(x = "Year",
+       y = "Electricity Generartion\n(TWh)",
+        color="Energy")+
+  scale_y_continuous(labels = scales::percent) +
+  guides(color = guide_legend(label.position = "bottom",
+                keywidth = 5))
+```
+
+<br><br><br>
+
+# Question 4
+
+The following data set is for Question 4:
+
+```{r}
+#| echo: true
+starbucks <- read_csv(
+  'https://bcdanl.github.io/data/starbucks.csv')
+```
+
+```{r}
+#| echo: false
+#| results: asis
+rmarkdown::paged_table(starbucks) 
+```
+
+## Variable description
+
+- `Product_Name`:	Product Name
+- `Size`:	Size of drink (short, tall, grande, venti)
+- `Milk`:	Milk Type type of milk used
+  - `0` none
+  - `1` nonfat
+  - `2` 2%
+  - `3` soy
+  - `4` coconut
+  - `5` whole
+- `Whip`:	Whip added or not (binary 0/1)
+- `Serv_Size_mL`: Serving size in ml
+- `Calories`: KCal
+- `Total_Fat_g`: Total fat grams
+- `Saturated_Fat_g`: Saturated fat grams
+- `Trans_Fat_g`: Trans fat grams
+- `Cholesterol_mg`: Cholesterol mg
+- `Sodium_mg`: Sodium milligrams
+- `Total_Carbs_g`: Total Carbs grams
+- `Fiber_g`: Fiber grams
+- `Sugar_g`: Sugar grams
+- `Caffeine_mg`: Caffeine in milligrams
+
+## Q4a.
+- Add the following two variables to `starbucks` data.frame
+  - `caffeine_mgml`: Caffeine in milligrams per mL
+  - `calories_kcml`: Calories KCal per mL
+
+
+*Answer*:
+```{r}
+starbucks <- starbucks |>
+  mutate(caffeine_mgml = caffeine_mg/serv_size_m_l) |>
+  mutate(calories_kcml = calories/serv_size_m_l)
+```
+
+<br><br>
+
+
+## Q4b.
+- Calculate a mean `caffeine_mgml` and a mean `calories_kcml` for each `product_name`.
+
+*Answer*:
+```{r}
+starbucks_1 <- starbucks |>
+  group_by(product_name) |>
+  summarise(caffeine_mgml = mean(caffeine_mgml),
+            calories_kcml = mean(calories_kcml),
+            ) 
+
+```
+
+<br><br>
+
+
+
+## Q4c.
+- For the top 10 `product_name` in terms of `caffeine_mgml` and the top 10 `product_name` in terms of `calories_kcml`, replicate the following ggplot.
+
+- Use the following commands for showing texts in the plot:
+```{r}
+#| echo: true
+# install.packages("showtext")
+library(showtext)
+showtext_auto()
+font_add_google("Annie Use Your Telescope", "annie")
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-height: 8
+#| fig-width: 8
+
+starbucks_2 <- starbucks_1 |>
+  arrange(-caffeine_mgml)|>
+  head(10)
+
+starbucks_3 <- starbucks_1 |>
+  arrange(-calories_kcml)|>
+  head(10)
+
+starbucks_4 <- rbind(starbucks_2, starbucks_3)
+
+s<- ggplot(starbucks_4, 
+           aes(x = calories_kcml, 
+               y = caffeine_mgml) )+
+  geom_point(aes(color = product_name))+
+  geom_text_repel(aes(label = product_name, 
+                      color = product_name),
+                  family = "annie") +
+  guides(color = "none") +
+  labs(x = "Calories",
+       y = "Caffeine\n(mgML)",
+       title = "STARBUCKS DRINKS",
+       subtitle = "Caffeine or Calories, which one would you go?")+
+  annotate("richtext", 
+           x = 0.6 , 
+           y = 0.5 , 
+           label = "<img src='https://bcdanl.github.io/lec_figs/starbucks.png' width='100'/>",
+           color = NA) +
+    annotate(geom = "rect", 
+             xmin = 0, xmax = .34,
+             ymin = .41, ymax = .8, 
+             fill = "lightgray", 
+             alpha = 0.5) +
+   annotate(geom = "rect", 
+             xmin = 0.68, xmax = .93,
+             ymin = 0, ymax = .34, 
+             fill = "lightgray", 
+             alpha = 0.5)+
+  theme(plot.title = element_text(colour ="#00704A" )  )
+
+
+s
+
+
+
+
+```
+
+```
+
+- Use the following `annotate()` geom to insert the starbucks image in the plot:
+
+```{r}
+#| echo: true
+#| eval: false
+annotate("richtext", 
+           x = Calories , 
+           y =  Caffeine, 
+           label = "<img src='https://bcdanl.github.io/lec_figs/starbucks.png' width='100'/>", 
+           fill =  ,
+           size =  , 
+           color =  )
+```
+
+- Use the following `geom_text_repel()` geom to use the `annie` font
+
+```{r}
+#| echo: true
+#| eval: false
+geom_text_repel(max.overlaps = ,
+                  size =  ,
+                  min.segment.length =  ,
+                  point.padding =  ,
+                  box.padding =  ,
+                  show.legend =  ,
+                  family = "annie")
+```
+
+
+- Use the color, `#00704A`, for the title.
+
+*Answer*:
+```{r}
+#| fig-height: 9
+#| warning: false
+#| message: false
+
+
+
+```
+
+<br><br>
+

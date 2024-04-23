@@ -2,8 +2,7 @@
 title: "Data Visualization 1"
 author: "Alexis Kruzicki"
 date: "2024-02-21"
-categories: [ code, analysis]
-image: "image.png"
+categories: [ code, data-visualization]
 
 execute: 
   warning: false

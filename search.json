@@ -60,7 +60,7 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nFlowers\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nAlexis Kruzicki\n\n\n4 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nLoading R packages\n\n\n\n\n\n\n\n\n\n11 min\n\n\n\n\n\n\n  \n\n\n\n\nData Visualizaiton 2\n\n\nProject Proposal and Data Visualization\n\n\n\n\n\n\nMar 22, 2024\n\n\nAlexis Kruzicki\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nData Visualization 1\n\n\n\n\n\n\n\n\n\nFeb 21, 2024\n\n\nAlexis Kruzicki\n\n\n4 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -103,5 +103,89 @@
     "title": "Determinants of Financial Literacy at SUNY Geneseo",
     "section": "3.1 Significance of the Study",
     "text": "3.1 Significance of the Study"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html",
+    "href": "posts/post-with-code/hw_3.html",
+    "title": "",
+    "section": "",
+    "text": "CodeShow All CodeHide All CodeView Source"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#loading-r-packages",
+    "href": "posts/post-with-code/hw_3.html#loading-r-packages",
+    "title": "",
+    "section": "Loading R packages",
+    "text": "Loading R packages\n\n\nCode\nlibrary(knitr)\nlibrary(tidyverse)\nlibrary(socviz)\nlibrary(ggthemes)\nlibrary(ggrepel)\nlibrary(ggtext)\nlibrary(hrbrthemes)\nlibrary(gapminder)"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q1a",
+    "href": "posts/post-with-code/hw_3.html#q1a",
+    "title": "",
+    "section": "Q1a",
+    "text": "Q1a\n\nReplicate the following ggplot.\n\nUse the color #0072B2 for dots.\n\n\nAnswer:\n\n\nCode\ncontinents &lt;-c(\"Africa\", \"Americas\", \"Asia\", \"Europe\")\n\ngapminder_1 &lt;- gapminder::gapminder|&gt;\n  filter(year==2007) %&gt;% \n  filter(continent %in% continents)\n\n# gapminder_1 &lt;- gapminder_1|&gt;\n#   filter(continent==continents)\n\nggplot (gapminder_1, \n        aes(x= lifeExp, \n            y = reorder(country, lifeExp))) + \n  geom_point(color=\"#0072B2\") + \n  geom_text(aes(label=lifeExp), hjust = -.25) +\n  facet_wrap(continent~.,\n                           scales = \"free_y\"                                                                      ) +\n  xlim(c(40,110))"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q1b",
+    "href": "posts/post-with-code/hw_3.html#q1b",
+    "title": "",
+    "section": "Q1b",
+    "text": "Q1b\n\nMake a simple comment on the visualization result.\n\nAnswer:\nEurope has the overall highest life expectency"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q2a",
+    "href": "posts/post-with-code/hw_3.html#q2a",
+    "title": "",
+    "section": "Q2a",
+    "text": "Q2a\n\nReplicate the following ggplot.\n\nThe following describes the type values:\n\nn_ot_us: Number of US tweets\nn_ot_wrld: Number of worldwide tweets\nn_rt_lk_us: Number of US retweets & likes\nn_rt_lk_wrld: Number of worldwide retweets & likes\n\nUse the colors, maroon and #428bca properly.\n\n\nAnswer:\n\n\nCode\n# d &lt;- data.frame(x=1:10, y=1/(10:1))\n# ggplot(d, aes(x= year, y=)) + geom_bar(stat=\"identity\")\n\n# library(ggplot2)\n\nn_tweets &lt;- n_tweets_long %&gt;% \n  filter(type == 'n_ot_us' | type == 'n_ot_wrld' ) %&gt;% \n  mutate(type = ifelse(type == 'n_ot_us', \"US\", \"Worldwide\"))\n\n\nn_retweets_lks &lt;- n_tweets_long %&gt;% \n   filter(type == 'n_rt_lk_us' | type == 'n_rt_lk_wrld' ) %&gt;% \n  mutate(type = ifelse(type == 'n_rt_lk_us', \"US\", \"Worldwide\"))\n  \n\n# Create the ggplot bar graph\nggplot(n_tweets, aes(x = year, y = n)) +\n  geom_bar(aes(fill = type), stat = \"identity\", position = \"dodge\") +\n  geom_line(data = n_retweets_lks, aes(color = type),\n            linewidth=3) +\n  geom_point(data = n_retweets_lks, size=3) +\n  scale_fill_manual(values = c(\"maroon\", \"#428bca\")) +\n  scale_color_manual(values = c(\"maroon\", \"#428bca\")) +\n  scale_x_continuous(breaks = 2012:2017) +\n  labs(x = \"Year\",\n       y = \"Number of Tweets, Retweets & Likes\\n(in thousand)\",\n       fill=\"Tweets\", color=\"Retweets and likes\") +\n  guides(fill = guide_legend(reverse = TRUE,\n                             label.position = \"bottom\",\n                             keywidth = 3,\n                             nrow = 2,\n                             order = 1),\n         color = guide_legend(reverse = TRUE,\n                             label.position = \"bottom\",\n                             keywidth = 3,\n                             nrow = 2,\n                             order = 2)) +\n  theme_minimal()+ \n  theme(legend.position = \"top\")"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q2b.",
+    "href": "posts/post-with-code/hw_3.html#q2b.",
+    "title": "",
+    "section": "Q2b.",
+    "text": "Q2b.\n\nMake a simple comment on the visualization result.\n\nAs the years increase the number of tweets, reweets and likes increase greatly. With worldwide having a larger increase."
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q3a",
+    "href": "posts/post-with-code/hw_3.html#q3a",
+    "title": "",
+    "section": "Q3a",
+    "text": "Q3a\n\nReplicate the following ggplot.\n\nAnswer:\n\n\nCode\nggplot(data = electricity) +\n  geom_line(aes(x = year,\n                y = value ,\n                color = energy),\n            linewidth=3) +\n  geom_hline(yintercept = 0) +\n  geom_vline(xintercept = 1985) +\nfacet_wrap(iso3c~.,) +\nscale_colour_viridis_d(option = \"plasma\")+\n  theme(legend.position = \"top\")+\n   labs(x = \"Year\",\n       y = \"Electricity Generartion\\n(TWh)\",\n        color=\"Energy\")+\n  guides(color = guide_legend(label.position = \"bottom\",\n                keywidth = 5))"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q3b",
+    "href": "posts/post-with-code/hw_3.html#q3b",
+    "title": "",
+    "section": "Q3b",
+    "text": "Q3b\n\nReplicate the following ggplot.\n\nAnswer:\n\n\nCode\nelectricity &lt;- electricity %&gt;% \n  group_by(iso3c, year) %&gt;% \n  mutate(pct = value / sum(value))\n\n\nggplot(data = electricity) +\n  geom_line(aes(x = year,\n                y = pct ,\n                color = energy),\n            linewidth=3) +\n  geom_hline(yintercept = 0) +\n  geom_vline(xintercept = 1985) +\nfacet_wrap(iso3c~.,) +\nscale_colour_viridis_d()+\n  theme(legend.position = \"top\")+\n   labs(x = \"Year\",\n       y = \"Electricity Generartion\\n(TWh)\",\n        color=\"Energy\")+\n  scale_y_continuous(labels = scales::percent) +\n  guides(color = guide_legend(label.position = \"bottom\",\n                keywidth = 5))"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#variable-description",
+    "href": "posts/post-with-code/hw_3.html#variable-description",
+    "title": "",
+    "section": "Variable description",
+    "text": "Variable description\n\nProduct_Name: Product Name\nSize: Size of drink (short, tall, grande, venti)\nMilk: Milk Type type of milk used\n\n0 none\n1 nonfat\n2 2%\n3 soy\n4 coconut\n5 whole\n\nWhip: Whip added or not (binary 0/1)\nServ_Size_mL: Serving size in ml\nCalories: KCal\nTotal_Fat_g: Total fat grams\nSaturated_Fat_g: Saturated fat grams\nTrans_Fat_g: Trans fat grams\nCholesterol_mg: Cholesterol mg\nSodium_mg: Sodium milligrams\nTotal_Carbs_g: Total Carbs grams\nFiber_g: Fiber grams\nSugar_g: Sugar grams\nCaffeine_mg: Caffeine in milligrams"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q4a.",
+    "href": "posts/post-with-code/hw_3.html#q4a.",
+    "title": "",
+    "section": "Q4a.",
+    "text": "Q4a.\n\nAdd the following two variables to starbucks data.frame\n\ncaffeine_mgml: Caffeine in milligrams per mL\ncalories_kcml: Calories KCal per mL\n\n\nAnswer:\n\n\nCode\nstarbucks &lt;- starbucks |&gt;\n  mutate(caffeine_mgml = caffeine_mg/serv_size_m_l) |&gt;\n  mutate(calories_kcml = calories/serv_size_m_l)"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q4b.",
+    "href": "posts/post-with-code/hw_3.html#q4b.",
+    "title": "",
+    "section": "Q4b.",
+    "text": "Q4b.\n\nCalculate a mean caffeine_mgml and a mean calories_kcml for each product_name.\n\nAnswer:\n\n\nCode\nstarbucks_1 &lt;- starbucks |&gt;\n  group_by(product_name) |&gt;\n  summarise(caffeine_mgml = mean(caffeine_mgml),\n            calories_kcml = mean(calories_kcml),\n            )"
+  },
+  {
+    "objectID": "posts/post-with-code/hw_3.html#q4c.",
+    "href": "posts/post-with-code/hw_3.html#q4c.",
+    "title": "",
+    "section": "Q4c.",
+    "text": "Q4c.\n\nFor the top 10 product_name in terms of caffeine_mgml and the top 10 product_name in terms of calories_kcml, replicate the following ggplot.\nUse the following commands for showing texts in the plot:\n\n\n\nCode\n# install.packages(\"showtext\")\nlibrary(showtext)\n\n\nWarning: package 'showtext' was built under R version 4.3.3\n\n\nLoading required package: sysfonts\n\n\nWarning: package 'sysfonts' was built under R version 4.3.3\n\n\nLoading required package: showtextdb\n\n\nWarning: package 'showtextdb' was built under R version 4.3.3\n\n\nCode\nshowtext_auto()\nfont_add_google(\"Annie Use Your Telescope\", \"annie\")\n\n\n\n\nCode\nstarbucks_2 &lt;- starbucks_1 |&gt;\n  arrange(-caffeine_mgml)|&gt;\n  head(10)\n\nstarbucks_3 &lt;- starbucks_1 |&gt;\n  arrange(-calories_kcml)|&gt;\n  head(10)\n\nstarbucks_4 &lt;- rbind(starbucks_2, starbucks_3)\n\ns&lt;- ggplot(starbucks_4, \n           aes(x = calories_kcml, \n               y = caffeine_mgml) )+\n  geom_point(aes(color = product_name))+\n  geom_text_repel(aes(label = product_name, \n                      color = product_name),\n                  family = \"annie\") +\n  guides(color = \"none\") +\n  labs(x = \"Calories\",\n       y = \"Caffeine\\n(mgML)\",\n       title = \"STARBUCKS DRINKS\",\n       subtitle = \"Caffeine or Calories, which one would you go?\")+\n  annotate(\"richtext\", \n           x = 0.6 , \n           y = 0.5 , \n           label = \"&lt;img src='https://bcdanl.github.io/lec_figs/starbucks.png' width='100'/&gt;\",\n           color = NA) +\n    annotate(geom = \"rect\", \n             xmin = 0, xmax = .34,\n             ymin = .41, ymax = .8, \n             fill = \"lightgray\", \n             alpha = 0.5) +\n   annotate(geom = \"rect\", \n             xmin = 0.68, xmax = .93,\n             ymin = 0, ymax = .34, \n             fill = \"lightgray\", \n             alpha = 0.5)+\n  theme(plot.title = element_text(colour =\"#00704A\" )  )\n\n\ns\n\n\n\n\n\n\n- Use the following `annotate()` geom to insert the starbucks image in the plot:\n\n::: {.cell}\n\n```{.r .cell-code}\nannotate(\"richtext\", \n           x = Calories , \n           y =  Caffeine, \n           label = \"&lt;img src='https://bcdanl.github.io/lec_figs/starbucks.png' width='100'/&gt;\", \n           fill =  ,\n           size =  , \n           color =  )\n:::\n\nUse the following geom_text_repel() geom to use the annie font\n\n\n\nCode\ngeom_text_repel(max.overlaps = ,\n                  size =  ,\n                  min.segment.length =  ,\n                  point.padding =  ,\n                  box.padding =  ,\n                  show.legend =  ,\n                  family = \"annie\")\n\n\n\nUse the color, #00704A, for the title.\n\nAnswer:"
   }
 ]
