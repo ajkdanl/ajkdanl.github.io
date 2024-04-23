@@ -1,8 +1,7 @@
 ---
-title: Homework 3
-subtitle: Advanced Data Visualization
-author: 'Alexis Kruzicki'
-date: 3/28/2024
+title: "Data Visualization 3"
+author: "Alexis Kruzicki"
+date: "2024-02-21"
 categories: [ code, data-visualization]
 
 
@@ -12,11 +11,6 @@ execute:
   fig-width: 9
   fig-align: center
 ---
-
-<br>
-
-## Loading R packages
-
 
 ```{r setup}
 #| include: false
