@@ -37,6 +37,7 @@ theme_set(theme_ipsum()+
 ncdc_temp <- read_csv('https://bcdanl.github.io/data/ncdc_temp_cleaned.csv')
 
 ```
+
 ```{r}
 date_selected <- as.Date(c("0000-01-01", "0000-04-01",
                                             "0000-07-01",
@@ -113,16 +114,14 @@ ma + labs(x= "height(cm)")+ labs(y= "% body fat")
 titanic <- read_csv(
   'https://bcdanl.github.io/data/titanic_cleaned.csv')
 
-t <- data.frame(v1=rnorm(100),v2=rnorm(100,1,1),v3=rnorm(100,0,2))
-data<- melt(titanic$age)
 ggplot(titanic, aes(x=age, fill=sex)) + geom_density(alpha=0.25)
 ```
+
+
 ```{r}
 cows_filtered <- read_csv(
   'https://bcdanl.github.io/data/cows_filtered.csv')
 
-t <- data.frame(v1=rnorm(100),v2=rnorm(100,1,1),v3=rnorm(100,0,2))
-data<- melt(cows_filtered$butterfat)
 ggplot(cows_filtered, aes(x=butterfat, fill=breed)) + geom_density(alpha=0.25)
 ```
 

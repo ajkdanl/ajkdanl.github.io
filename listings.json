@@ -2,10 +2,9 @@
   {
     "listing": "/blog-listing.html",
     "items": [
-      "/posts/post-with-code/hw_3.html",
-      "/posts/starwars/hw_2.html",
-      "/posts/ggplot/hw_1.html",
-      "/posts/welcome/index.html"
+      "/posts/data_analytics_3/hw_3.html",
+      "/posts/data_analytics_2/hw_2.html",
+      "/posts/data_analytics_1/hw_1.html"
     ]
   }
 ]
