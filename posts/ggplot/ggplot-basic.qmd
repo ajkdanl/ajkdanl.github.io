@@ -1,8 +1,8 @@
 ---
-title: "Flowers"
+title: "Data Visualization 1"
 author: "Alexis Kruzicki"
 date: "2024-02-21"
-categories: [Flowers, code, analysis]
+categories: [ code, analysis]
 image: "image.png"
 
 execute: 
@@ -86,6 +86,7 @@ c<- ggplot(cars, aes(disp, mpg)) +
 c + labs(x= "displacement")+ labs(y= "fuel efficiency")
 ```
 ```{r}
+#| fig-height: 12
 popgrowth_df <- read_csv(
   'https://bcdanl.github.io/data/popgrowth.csv')
 
