@@ -23,6 +23,8 @@ format:
     mainfont: system-ui; 
     highlight-style: atom-one
     css: styles.css
-    toc: false
+    toc: true
+    code-fold: true
+    code-tools: true
     include-after-body: target_blank.html
     

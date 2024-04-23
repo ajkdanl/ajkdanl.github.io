@@ -1,0 +1,128 @@
+---
+title: "Flowers"
+author: "Alexis Kruzicki"
+date: "2024-02-21"
+categories: [Flowers, code, analysis]
+image: "image.png"
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---
+```{r}
+#| include: false
+
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+theme_set(theme_ipsum()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(10,0,0,0)),
+                axis.title.y  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(0,10,0,0))
+                )
+          )
+```
+
+
+```{r}
+ncdc_temp <- read_csv('https://bcdanl.github.io/data/ncdc_temp_cleaned.csv')
+
+```
+```{r}
+date_selected <- as.Date(c("0000-01-01", "0000-04-01",
+                                            "0000-07-01",
+                                            "0000-10-01",
+                                            "0000-12-31"
+                                            ))
+df <- filter(ncdc_temp, date %in% date_selected)
+p <- ggplot(data = ncdc_temp,
+            mapping = 
+              aes( x = date,
+                   y = temperature ) )
+
+p + geom_line( aes( color = location ),show.legend = F) +
+  geom_point(data = df) +
+  labs(x = "month") +
+  scale_x_date(breaks = date_selected,
+               date_labels = "%b")
+```
+
+```{r}
+p_1 <- ggplot(data = ncdc_temp,
+            mapping = 
+              aes(x = temperature, 
+                  y = month))
+p_1 + geom_boxplot(
+  fill = "grey"
+) + 
+  labs(x = NULL) + 
+  coord_flip()
+```
+
+```{r}
+library(ggridges)
+
+p <- ggplot(data = ncdc_temp,
+            mapping = 
+              aes(x = temperature, 
+                  y = month))
+p + geom_density_ridges(alpha = 0.3, fill = "blue")
+```
+```{r}
+cars <- mtcars
+
+c<- ggplot(cars, aes(disp, mpg)) +
+        geom_point(aes(color = hp))
+c + labs(x= "displacement")+ labs(y= "fuel efficiency")
+```
+```{r}
+popgrowth_df <- read_csv(
+  'https://bcdanl.github.io/data/popgrowth.csv')
+
+popgrowth_df %>% arrange(popgrowth, state)
+
+pg<- ggplot(popgrowth_df, aes(state, popgrowth, fill = region)) +
+        geom_bar(stat = "identity", position = "dodge") +
+        coord_flip()
+
+pg + labs(y= "population growth 2000 to 2010")+ labs(x= "reorder state, pop growth")
+```
+
+```{r}
+male_Aus <- read_csv(
+  'https://bcdanl.github.io/data/aus_athletics_male.csv')
+
+ma<- ggplot(male_Aus, aes(x=height, y= pcBfat, group=sport)) +
+  geom_point(aes(shape=sport, color= sport))
+
+ma + labs(x= "height(cm)")+ labs(y= "% body fat")
+
+```
+
+```{r}
+titanic <- read_csv(
+  'https://bcdanl.github.io/data/titanic_cleaned.csv')
+
+t <- data.frame(v1=rnorm(100),v2=rnorm(100,1,1),v3=rnorm(100,0,2))
+data<- melt(titanic$age)
+ggplot(titanic, aes(x=age, fill=sex)) + geom_density(alpha=0.25)
+```
+```{r}
+cows_filtered <- read_csv(
+  'https://bcdanl.github.io/data/cows_filtered.csv')
+
+t <- data.frame(v1=rnorm(100),v2=rnorm(100,1,1),v3=rnorm(100,0,2))
+data<- melt(cows_filtered$butterfat)
+ggplot(cows_filtered, aes(x=butterfat, fill=breed)) + geom_density(alpha=0.25)
+```
+

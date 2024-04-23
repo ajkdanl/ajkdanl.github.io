@@ -10,10 +10,7 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/alexis-kruzicki/
-    - icon: instagram
-      text: Instagram
-      href: https://instagram.com
-    - icon: github
+    - icon: githubdata:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAWElEQVR42mNgGPTAxsZmJsVqQApgmGw1yApwKcQiT7phRBuCzzCSDSHGMKINIeDNmWQlA2IigKJwIssQkHdINgxfmBBtGDEBS3KCxBc7pMQgMYE5c/AXPwAwSX4lV3pTWwAAAABJRU5ErkJggg==
       text: GitHub
       href: https://github.com/ajkdanl
     - icon: file-earmark-pdf
