@@ -106,6 +106,8 @@ This survey is being commissioned by the SUNY Geneseo School of Business in part
 #| warning: false
 #| message: false
 
+table <- read.csv("C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/ajkdanl.github.io/project_files/Items.csv")
+
 df <- read_csv("C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/survey-raw.csv")
 
 var_desc <- colnames(df)
@@ -430,6 +432,8 @@ df_clean |>
 
 
 ```{r}
+DT::datatable(table)
+
 DT::datatable(df_clean |> 
                 mutate(over_confidence = round(over_confidence, 2),
                        score_scaled = round(over_confidence, 2),
