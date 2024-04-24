@@ -809,8 +809,6 @@ df_dummies <- cbind(df_clean_ML2$score ,df_dummies)
 df_ML2 <- df_dummies |> 
   rename(score = `df_clean_ML2$score`)
 
-
-
 ```
 
 
