@@ -489,6 +489,7 @@ df_clean |>
   filter(!is.na(year_upper_lower),
          !is.na(credit_card)) |> 
   ggplot(aes(fill =score_pf, y= year_upper_lower)) +
+  scale_fill_manual(values = c("#9bbbae", "#065535"))+
   geom_bar(position = "fill") +
   facet_wrap(credit_card~.) +
   theme(legend.position = "top")
@@ -584,6 +585,7 @@ df_clean |>
   mutate(score_pf = factor(score_pf)) |> 
   filter(!is.na(age_first_job))|> 
   ggplot(aes(fill =score_pf, y= age_first_job)) +
+  scale_fill_manual(values = c("#9bbbae", "#065535"))+
   geom_bar(position = "fill") +
   theme(legend.position = "top")
 ```
@@ -595,6 +597,7 @@ df_clean |>
   mutate(score_pf = factor(score_pf)) |> 
   filter(!is.na(file_tax))|> 
   ggplot(aes(fill =score_pf, y= file_tax)) +
+  scale_fill_manual(values = c("#9bbbae", "#065535"))+
   geom_bar(position = "fill") +
   theme(legend.position = "top")
 ```
@@ -607,6 +610,7 @@ df_clean |>
   mutate(score_pf = factor(score_pf)) |> 
   filter(!is.na(credit_card))|> 
   ggplot(aes(fill =score_pf, y= credit_card)) +
+  scale_fill_manual(values = c("#9bbbae", "#065535"))+
   geom_bar(position = "fill") +
   theme(legend.position = "top")
 
@@ -620,6 +624,7 @@ df_clean |>
   mutate(score = factor(score)) |> 
   filter(!is.na(year_upper_lower)) |> 
   ggplot(aes(fill =score, x= year_upper_lower)) +
+   scale_fill_manual(values = c("#c9dad3", "#84ab9b", "#6c9b88", "#63917e", "#537a6a", "#436256", "#3b574c"))+
   geom_bar(position = "fill")
 
 ```
@@ -638,6 +643,7 @@ df_clean |>
              fill = year_geneseo)) +
   geom_col() +
   scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("#c9dad3", "#84ab9b", "#6c9b88", "#63917e", "#537a6a", "#436256", "#3b574c"))+
   guides(fill = "none") +
   labs(x = "Year at Geneseo",
        y = "Proportion",
@@ -650,6 +656,7 @@ df_clean |>
 df_clean |> 
   mutate(score = factor(score)) |> 
   ggplot(aes(x =score, fill= score)) +
+  scale_fill_manual(values = c("#c9dad3", "#84ab9b", "#6c9b88", "#63917e", "#537a6a", "#436256", "#3b574c"))+
   geom_bar(show.legend = F)
 ```
 
@@ -662,6 +669,7 @@ df_clean |>
   mutate(score = factor(score)) |> 
   filter(!is.na(year_geneseo)) |> 
   ggplot(aes(fill =score, x= year_geneseo)) +
+  scale_fill_manual(values = c("#c9dad3", "#84ab9b", "#6c9b88", "#63917e", "#537a6a", "#436256", "#3b574c"))+
   geom_bar(position = "fill")
 
 ```
@@ -1031,11 +1039,6 @@ df_dummies_cor <- cor(df_dummies) |>
 
 
 
-
-# Discussion
-## Significance of the Study
-
-# Conclusion
 
 
 
