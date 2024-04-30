@@ -730,6 +730,8 @@ df_clean |>
 
 ```
 
+
+
 ```{r}
 df_clean |>
   filter(!is.na(fnce_course_geneseo)) |>
@@ -747,9 +749,6 @@ labs(title = "Finance Course Taken at Geneseo Compared to Score ",
                              reverse = T)) +
   scale_fill_manual(values = rev(c('#9bbbae', '#699985','#065535')))
 ```
-
-```
-
 
 
 # Empirical Analysis
