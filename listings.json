@@ -2,9 +2,9 @@
   {
     "listing": "/blog-listing.html",
     "items": [
-      "/posts/data_analytics_3/hw_3.html",
       "/posts/data_analytics_2/hw_2.html",
-      "/posts/data_analytics_1/hw_1.html"
+      "/posts/data_analytics_1/hw_1.html",
+      "/posts/data_analytics_3/hw_3.html"
     ]
   }
 ]

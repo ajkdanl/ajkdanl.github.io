@@ -1,16 +1,10 @@
 ---
-title: "Data Visualization 3"
-author: "Alexis Kruzicki"
-date: "2024-02-21"
+title: Data Visualizaiton 3
+author: Alexis Kruzicki
+date: 2024-02-21
 categories: [ code, data-visualization]
-
-
-execute: 
-  warning: false
-  echo: false
-  fig-width: 9
-  fig-align: center
 ---
+
 
 ```{r setup}
 #| include: false

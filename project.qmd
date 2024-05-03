@@ -105,9 +105,15 @@ This survey is being commissioned by the SUNY Geneseo School of Business in part
 ```{r}
 #| warning: false
 #| message: false
+#| results: asis
 
-table <- read.csv("C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/ajkdanl.github.io/project_files/Items.csv")
+table <- read_csv("Items.csv")
 
+DT::datatable(table)
+
+```
+
+```{r}
 df <- read_csv("C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/survey-raw.csv")
 
 var_desc <- colnames(df)
@@ -516,7 +522,6 @@ df_clean_ML <- df_clean |>
 #| warning: false
 #| message: false
 library(maps)
-library(ggplot2)
 
 # maps::map('county', region = 'new york', col = "#5E610B")
 # map.axes(cex.axis=0.8) 
@@ -894,11 +899,6 @@ broom::tidy(model_lm, conf.int = T) |>
 ```
 
 
-
-```{r}
-# df_clean |> 
-  # count(credit_card)
-```
 
 
 ```{r}
