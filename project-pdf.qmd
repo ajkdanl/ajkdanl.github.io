@@ -12,10 +12,6 @@ institute:
 date: last-modified
 categories: [financial-literacy, data-cleaning, machine-learning, data-visualization, r, quarto]
 
-toc: true
-toc-title: "Table of Contents"
-toc-depth: 3
-number-sections: true
 
 fig-width: 9
 
@@ -25,6 +21,13 @@ execute:
   warning: false
 
 from: markdown+emoji
+
+format:
+  docx:
+    prefer-html: true
+    toc: true
+    number-sections: true
+    highlight-style: github
 ---
 
 
@@ -107,7 +110,7 @@ This survey is being commissioned by the SUNY Geneseo School of Business in part
 #| message: false
 #| results: asis
 
-table <- read_csv("\Items.csv")
+table <- read_csv("Items.csv")
 
 DT::datatable(table)
 
@@ -849,7 +852,7 @@ ame_result <- summary(m)
 
 ```{r}
 #| results: asis
-
+#| eval: false
 stargazer(model, model_lm, type = 'html',
           omit = c("MSA", "grad_", "pay_",
                    "college_fund"))
@@ -987,7 +990,7 @@ df1 |>
   labs(x = "Variable Importance",
        y = "",
        title = "Random Forest Estimation",
-       subtitle = "Varialbe Importance") +
+       subtitle = "Variable Importance") +
   scale_fill_manual(values = c("#E5F5E0" ,
   "#CCE1CA" ,
   "#B2CEB4" ,
