@@ -420,6 +420,13 @@ df_clean_sum <- skim(df_clean) |>
 ```
 
 
+```{html}
+<style>iframe{height: 1200px; width: 800px}</style>
+<iframe height="100%" width="100%" frameborder="no"
+src="https://ajkdanl.shinyapps.io/hw4shiny/">
+</iframe>
+```
+
 ```{r}
 #| warning: false
 df_clean |> 
