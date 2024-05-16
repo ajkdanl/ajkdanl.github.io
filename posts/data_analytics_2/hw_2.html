@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,17 +97,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-
 <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
 <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -109,10 +144,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Alexis Kruzicki</span>
     </a>
@@ -124,18 +159,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../project.html" rel="" target="">
- <span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog-listing.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../hw6/hw6.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog-listing.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -203,6 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="question-1" class="level1">
 <h1>Question 1</h1>
 <p>Add a web-page of the project proposal to your website.</p>
@@ -211,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Abstract</h1>
 <p>Through surveying the SUNY Geneseo student body, we plan to explore what determines the level of financial literacy among students at SUNY Geneseo. The survey contains questions that address students’ demographics, academic background, family support through college, personal finance experience, and a financial literacy quiz. The sample size is 403 respondents, which is 10% of the population at SUNY Geneseo. We have noticed many students struggling on campus with the basics of personal finance and want to address the growing concern of how this could affect their success through college and in the future. We are interested in how the students’ family or academic background is associated with their financial literacy. Based on this exploration we plan to make some policy and curriculum suggestions on how we can improve the overall understanding of personal finance at SUNY Geneseo. Based on this research we plan to design a curriculum that will be offered to all students through the Geneseo Opportunities for Leadership Development (GOLD) program and will address the largest educational gaps that were identified in the survey. This course will be evaluated by administering the same financial literacy quiz following completion of the course and will offer insight into whether or not there is a substantial change in the students’ personal finance knowledge.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -225,13 +265,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span>mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["model"],"name":[2],"type":["chr"],"align":["left"]},{"label":["displ"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["trans"],"name":[6],"type":["chr"],"align":["left"]},{"label":["drv"],"name":[7],"type":["chr"],"align":["left"]},{"label":["cty"],"name":[8],"type":["int"],"align":["right"]},{"label":["hwy"],"name":[9],"type":["int"],"align":["right"]},{"label":["fl"],"name":[10],"type":["chr"],"align":["left"]},{"label":["class"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"20","9":"31","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"auto(av)","7":"f","8":"21","9":"30","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"3.1","4":"2008","5":"6","6":"auto(av)","7":"f","8":"18","9":"27","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"4","8":"18","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"4","8":"16","9":"25","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"4","8":"20","9":"28","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"2.0","4":"2008","5":"4","6":"auto(s6)","7":"4","8":"19","9":"27","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"4","8":"15","9":"25","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"17","9":"25","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"3.1","4":"2008","5":"6","6":"auto(s6)","7":"4","8":"17","9":"25","10":"p","11":"compact"},{"1":"audi","2":"a4 quattro","3":"3.1","4":"2008","5":"6","6":"manual(m6)","7":"4","8":"15","9":"25","10":"p","11":"compact"},{"1":"audi","2":"a6 quattro","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"4","8":"15","9":"24","10":"p","11":"midsize"},{"1":"audi","2":"a6 quattro","3":"3.1","4":"2008","5":"6","6":"auto(s6)","7":"4","8":"17","9":"25","10":"p","11":"midsize"},{"1":"audi","2":"a6 quattro","3":"4.2","4":"2008","5":"8","6":"auto(s6)","7":"4","8":"16","9":"23","10":"p","11":"midsize"},{"1":"chevrolet","2":"c1500 suburban 2wd","3":"5.3","4":"2008","5":"8","6":"auto(l4)","7":"r","8":"14","9":"20","10":"r","11":"suv"},{"1":"chevrolet","2":"c1500 suburban 2wd","3":"5.3","4":"2008","5":"8","6":"auto(l4)","7":"r","8":"11","9":"15","10":"e","11":"suv"},{"1":"chevrolet","2":"c1500 suburban 2wd","3":"5.3","4":"2008","5":"8","6":"auto(l4)","7":"r","8":"14","9":"20","10":"r","11":"suv"},{"1":"chevrolet","2":"c1500 suburban 2wd","3":"5.7","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"13","9":"17","10":"r","11":"suv"},{"1":"chevrolet","2":"c1500 suburban 2wd","3":"6.0","4":"2008","5":"8","6":"auto(l4)","7":"r","8":"12","9":"17","10":"r","11":"suv"},{"1":"chevrolet","2":"corvette","3":"5.7","4":"1999","5":"8","6":"manual(m6)","7":"r","8":"16","9":"26","10":"p","11":"2seater"},{"1":"chevrolet","2":"corvette","3":"5.7","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"15","9":"23","10":"p","11":"2seater"},{"1":"chevrolet","2":"corvette","3":"6.2","4":"2008","5":"8","6":"manual(m6)","7":"r","8":"16","9":"26","10":"p","11":"2seater"},{"1":"chevrolet","2":"corvette","3":"6.2","4":"2008","5":"8","6":"auto(s6)","7":"r","8":"15","9":"25","10":"p","11":"2seater"},{"1":"chevrolet","2":"corvette","3":"7.0","4":"2008","5":"8","6":"manual(m6)","7":"r","8":"15","9":"24","10":"p","11":"2seater"},{"1":"chevrolet","2":"k1500 tahoe 4wd","3":"5.3","4":"2008","5":"8","6":"auto(l4)","7":"4","8":"14","9":"19","10":"r","11":"suv"},{"1":"chevrolet","2":"k1500 tahoe 4wd","3":"5.3","4":"2008","5":"8","6":"auto(l4)","7":"4","8":"11","9":"14","10":"e","11":"suv"},{"1":"chevrolet","2":"k1500 tahoe 4wd","3":"5.7","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"suv"},{"1":"chevrolet","2":"k1500 tahoe 4wd","3":"6.5","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"14","9":"17","10":"d","11":"suv"},{"1":"chevrolet","2":"malibu","3":"2.4","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"19","9":"27","10":"r","11":"midsize"},{"1":"chevrolet","2":"malibu","3":"2.4","4":"2008","5":"4","6":"auto(l4)","7":"f","8":"22","9":"30","10":"r","11":"midsize"},{"1":"chevrolet","2":"malibu","3":"3.1","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"chevrolet","2":"malibu","3":"3.5","4":"2008","5":"6","6":"auto(l4)","7":"f","8":"18","9":"29","10":"r","11":"midsize"},{"1":"chevrolet","2":"malibu","3":"3.6","4":"2008","5":"6","6":"auto(s6)","7":"f","8":"17","9":"26","10":"r","11":"midsize"},{"1":"dodge","2":"caravan 2wd","3":"2.4","4":"1999","5":"4","6":"auto(l3)","7":"f","8":"18","9":"24","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.0","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"17","9":"24","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.3","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"16","9":"22","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.3","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"16","9":"22","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.3","4":"2008","5":"6","6":"auto(l4)","7":"f","8":"17","9":"24","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.3","4":"2008","5":"6","6":"auto(l4)","7":"f","8":"17","9":"24","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.3","4":"2008","5":"6","6":"auto(l4)","7":"f","8":"11","9":"17","10":"e","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.8","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"15","9":"22","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.8","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"15","9":"21","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"3.8","4":"2008","5":"6","6":"auto(l6)","7":"f","8":"16","9":"23","10":"r","11":"minivan"},{"1":"dodge","2":"caravan 2wd","3":"4.0","4":"2008","5":"6","6":"auto(l6)","7":"f","8":"16","9":"23","10":"r","11":"minivan"},{"1":"dodge","2":"dakota pickup 4wd","3":"3.7","4":"2008","5":"6","6":"manual(m6)","7":"4","8":"15","9":"19","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"3.7","4":"2008","5":"6","6":"auto(l4)","7":"4","8":"14","9":"18","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"3.9","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"13","9":"17","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"3.9","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"14","9":"17","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"14","9":"19","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"14","9":"19","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"9","9":"12","10":"e","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"5.2","4":"1999","5":"8","6":"manual(m5)","7":"4","8":"11","9":"17","10":"r","11":"pickup"},{"1":"dodge","2":"dakota pickup 4wd","3":"5.2","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"pickup"},{"1":"dodge","2":"durango 4wd","3":"3.9","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"13","9":"17","10":"r","11":"suv"},{"1":"dodge","2":"durango 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"17","10":"r","11":"suv"},{"1":"dodge","2":"durango 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"9","9":"12","10":"e","11":"suv"},{"1":"dodge","2":"durango 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"17","10":"r","11":"suv"},{"1":"dodge","2":"durango 4wd","3":"5.2","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"16","10":"r","11":"suv"},{"1":"dodge","2":"durango 4wd","3":"5.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"18","10":"r","11":"suv"},{"1":"dodge","2":"durango 4wd","3":"5.9","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"suv"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"4.7","4":"2008","5":"8","6":"manual(m6)","7":"4","8":"12","9":"16","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"9","9":"12","10":"e","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"17","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"17","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"4.7","4":"2008","5":"8","6":"manual(m6)","7":"4","8":"12","9":"16","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"4.7","4":"2008","5":"8","6":"manual(m6)","7":"4","8":"9","9":"12","10":"e","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"5.2","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"5.2","4":"1999","5":"8","6":"manual(m5)","7":"4","8":"11","9":"16","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"5.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"17","10":"r","11":"pickup"},{"1":"dodge","2":"ram 1500 pickup 4wd","3":"5.9","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"pickup"},{"1":"ford","2":"expedition 2wd","3":"4.6","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"11","9":"17","10":"r","11":"suv"},{"1":"ford","2":"expedition 2wd","3":"5.4","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"11","9":"17","10":"r","11":"suv"},{"1":"ford","2":"expedition 2wd","3":"5.4","4":"2008","5":"8","6":"auto(l6)","7":"r","8":"12","9":"18","10":"r","11":"suv"},{"1":"ford","2":"explorer 4wd","3":"4.0","4":"1999","5":"6","6":"auto(l5)","7":"4","8":"14","9":"17","10":"r","11":"suv"},{"1":"ford","2":"explorer 4wd","3":"4.0","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"15","9":"19","10":"r","11":"suv"},{"1":"ford","2":"explorer 4wd","3":"4.0","4":"1999","5":"6","6":"auto(l5)","7":"4","8":"14","9":"17","10":"r","11":"suv"},{"1":"ford","2":"explorer 4wd","3":"4.0","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"13","9":"19","10":"r","11":"suv"},{"1":"ford","2":"explorer 4wd","3":"4.6","4":"2008","5":"8","6":"auto(l6)","7":"4","8":"13","9":"19","10":"r","11":"suv"},{"1":"ford","2":"explorer 4wd","3":"5.0","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"13","9":"17","10":"r","11":"suv"},{"1":"ford","2":"f150 pickup 4wd","3":"4.2","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"14","9":"17","10":"r","11":"pickup"},{"1":"ford","2":"f150 pickup 4wd","3":"4.2","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"14","9":"17","10":"r","11":"pickup"},{"1":"ford","2":"f150 pickup 4wd","3":"4.6","4":"1999","5":"8","6":"manual(m5)","7":"4","8":"13","9":"16","10":"r","11":"pickup"},{"1":"ford","2":"f150 pickup 4wd","3":"4.6","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"13","9":"16","10":"r","11":"pickup"},{"1":"ford","2":"f150 pickup 4wd","3":"4.6","4":"2008","5":"8","6":"auto(l4)","7":"4","8":"13","9":"17","10":"r","11":"pickup"},{"1":"ford","2":"f150 pickup 4wd","3":"5.4","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"pickup"},{"1":"ford","2":"f150 pickup 4wd","3":"5.4","4":"2008","5":"8","6":"auto(l4)","7":"4","8":"13","9":"17","10":"r","11":"pickup"},{"1":"ford","2":"mustang","3":"3.8","4":"1999","5":"6","6":"manual(m5)","7":"r","8":"18","9":"26","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"3.8","4":"1999","5":"6","6":"auto(l4)","7":"r","8":"18","9":"25","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"4.0","4":"2008","5":"6","6":"manual(m5)","7":"r","8":"17","9":"26","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"4.0","4":"2008","5":"6","6":"auto(l5)","7":"r","8":"16","9":"24","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"4.6","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"15","9":"21","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"4.6","4":"1999","5":"8","6":"manual(m5)","7":"r","8":"15","9":"22","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"4.6","4":"2008","5":"8","6":"manual(m5)","7":"r","8":"15","9":"23","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"4.6","4":"2008","5":"8","6":"auto(l5)","7":"r","8":"15","9":"22","10":"r","11":"subcompact"},{"1":"ford","2":"mustang","3":"5.4","4":"2008","5":"8","6":"manual(m6)","7":"r","8":"14","9":"20","10":"p","11":"subcompact"},{"1":"honda","2":"civic","3":"1.6","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"28","9":"33","10":"r","11":"subcompact"},{"1":"honda","2":"civic","3":"1.6","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"24","9":"32","10":"r","11":"subcompact"},{"1":"honda","2":"civic","3":"1.6","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"25","9":"32","10":"r","11":"subcompact"},{"1":"honda","2":"civic","3":"1.6","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"23","9":"29","10":"p","11":"subcompact"},{"1":"honda","2":"civic","3":"1.6","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"24","9":"32","10":"r","11":"subcompact"},{"1":"honda","2":"civic","3":"1.8","4":"2008","5":"4","6":"manual(m5)","7":"f","8":"26","9":"34","10":"r","11":"subcompact"},{"1":"honda","2":"civic","3":"1.8","4":"2008","5":"4","6":"auto(l5)","7":"f","8":"25","9":"36","10":"r","11":"subcompact"},{"1":"honda","2":"civic","3":"1.8","4":"2008","5":"4","6":"auto(l5)","7":"f","8":"24","9":"36","10":"c","11":"subcompact"},{"1":"honda","2":"civic","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"21","9":"29","10":"p","11":"subcompact"},{"1":"hyundai","2":"sonata","3":"2.4","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"hyundai","2":"sonata","3":"2.4","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"18","9":"27","10":"r","11":"midsize"},{"1":"hyundai","2":"sonata","3":"2.4","4":"2008","5":"4","6":"auto(l4)","7":"f","8":"21","9":"30","10":"r","11":"midsize"},{"1":"hyundai","2":"sonata","3":"2.4","4":"2008","5":"4","6":"manual(m5)","7":"f","8":"21","9":"31","10":"r","11":"midsize"},{"1":"hyundai","2":"sonata","3":"2.5","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"hyundai","2":"sonata","3":"2.5","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"hyundai","2":"sonata","3":"3.3","4":"2008","5":"6","6":"auto(l5)","7":"f","8":"19","9":"28","10":"r","11":"midsize"},{"1":"hyundai","2":"tiburon","3":"2.0","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"19","9":"26","10":"r","11":"subcompact"},{"1":"hyundai","2":"tiburon","3":"2.0","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"19","9":"29","10":"r","11":"subcompact"},{"1":"hyundai","2":"tiburon","3":"2.0","4":"2008","5":"4","6":"manual(m5)","7":"f","8":"20","9":"28","10":"r","11":"subcompact"},{"1":"hyundai","2":"tiburon","3":"2.0","4":"2008","5":"4","6":"auto(l4)","7":"f","8":"20","9":"27","10":"r","11":"subcompact"},{"1":"hyundai","2":"tiburon","3":"2.7","4":"2008","5":"6","6":"auto(l4)","7":"f","8":"17","9":"24","10":"r","11":"subcompact"},{"1":"hyundai","2":"tiburon","3":"2.7","4":"2008","5":"6","6":"manual(m6)","7":"f","8":"16","9":"24","10":"r","11":"subcompact"},{"1":"hyundai","2":"tiburon","3":"2.7","4":"2008","5":"6","6":"manual(m5)","7":"f","8":"17","9":"24","10":"r","11":"subcompact"},{"1":"jeep","2":"grand cherokee 4wd","3":"3.0","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"17","9":"22","10":"d","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"3.7","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"15","9":"19","10":"r","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"4.0","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"15","9":"20","10":"r","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"4.7","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"14","9":"17","10":"r","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"9","9":"12","10":"e","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"14","9":"19","10":"r","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"5.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"13","9":"18","10":"r","11":"suv"},{"1":"jeep","2":"grand cherokee 4wd","3":"6.1","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"11","9":"14","10":"p","11":"suv"},{"1":"land rover","2":"range rover","3":"4.0","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"p","11":"suv"},{"1":"land rover","2":"range rover","3":"4.2","4":"2008","5":"8","6":"auto(s6)","7":"4","8":"12","9":"18","10":"r","11":"suv"},{"1":"land rover","2":"range rover","3":"4.4","4":"2008","5":"8","6":"auto(s6)","7":"4","8":"12","9":"18","10":"r","11":"suv"},{"1":"land rover","2":"range rover","3":"4.6","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"p","11":"suv"},{"1":"lincoln","2":"navigator 2wd","3":"5.4","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"11","9":"17","10":"r","11":"suv"},{"1":"lincoln","2":"navigator 2wd","3":"5.4","4":"1999","5":"8","6":"auto(l4)","7":"r","8":"11","9":"16","10":"p","11":"suv"},{"1":"lincoln","2":"navigator 2wd","3":"5.4","4":"2008","5":"8","6":"auto(l6)","7":"r","8":"12","9":"18","10":"r","11":"suv"},{"1":"mercury","2":"mountaineer 4wd","3":"4.0","4":"1999","5":"6","6":"auto(l5)","7":"4","8":"14","9":"17","10":"r","11":"suv"},{"1":"mercury","2":"mountaineer 4wd","3":"4.0","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"13","9":"19","10":"r","11":"suv"},{"1":"mercury","2":"mountaineer 4wd","3":"4.6","4":"2008","5":"8","6":"auto(l6)","7":"4","8":"13","9":"19","10":"r","11":"suv"},{"1":"mercury","2":"mountaineer 4wd","3":"5.0","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"13","9":"17","10":"r","11":"suv"},{"1":"nissan","2":"altima","3":"2.4","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"compact"},{"1":"nissan","2":"altima","3":"2.4","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"19","9":"27","10":"r","11":"compact"},{"1":"nissan","2":"altima","3":"2.5","4":"2008","5":"4","6":"auto(av)","7":"f","8":"23","9":"31","10":"r","11":"midsize"},{"1":"nissan","2":"altima","3":"2.5","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"23","9":"32","10":"r","11":"midsize"},{"1":"nissan","2":"altima","3":"3.5","4":"2008","5":"6","6":"manual(m6)","7":"f","8":"19","9":"27","10":"p","11":"midsize"},{"1":"nissan","2":"altima","3":"3.5","4":"2008","5":"6","6":"auto(av)","7":"f","8":"19","9":"26","10":"p","11":"midsize"},{"1":"nissan","2":"maxima","3":"3.0","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"nissan","2":"maxima","3":"3.0","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"19","9":"25","10":"r","11":"midsize"},{"1":"nissan","2":"maxima","3":"3.5","4":"2008","5":"6","6":"auto(av)","7":"f","8":"19","9":"25","10":"p","11":"midsize"},{"1":"nissan","2":"pathfinder 4wd","3":"3.3","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"14","9":"17","10":"r","11":"suv"},{"1":"nissan","2":"pathfinder 4wd","3":"3.3","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"15","9":"17","10":"r","11":"suv"},{"1":"nissan","2":"pathfinder 4wd","3":"4.0","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"14","9":"20","10":"p","11":"suv"},{"1":"nissan","2":"pathfinder 4wd","3":"5.6","4":"2008","5":"8","6":"auto(s5)","7":"4","8":"12","9":"18","10":"p","11":"suv"},{"1":"pontiac","2":"grand prix","3":"3.1","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"pontiac","2":"grand prix","3":"3.8","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"16","9":"26","10":"p","11":"midsize"},{"1":"pontiac","2":"grand prix","3":"3.8","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"17","9":"27","10":"r","11":"midsize"},{"1":"pontiac","2":"grand prix","3":"3.8","4":"2008","5":"6","6":"auto(l4)","7":"f","8":"18","9":"28","10":"r","11":"midsize"},{"1":"pontiac","2":"grand prix","3":"5.3","4":"2008","5":"8","6":"auto(s4)","7":"f","8":"16","9":"25","10":"p","11":"midsize"},{"1":"subaru","2":"forester awd","3":"2.5","4":"1999","5":"4","6":"manual(m5)","7":"4","8":"18","9":"25","10":"r","11":"suv"},{"1":"subaru","2":"forester awd","3":"2.5","4":"1999","5":"4","6":"auto(l4)","7":"4","8":"18","9":"24","10":"r","11":"suv"},{"1":"subaru","2":"forester awd","3":"2.5","4":"2008","5":"4","6":"manual(m5)","7":"4","8":"20","9":"27","10":"r","11":"suv"},{"1":"subaru","2":"forester awd","3":"2.5","4":"2008","5":"4","6":"manual(m5)","7":"4","8":"19","9":"25","10":"p","11":"suv"},{"1":"subaru","2":"forester awd","3":"2.5","4":"2008","5":"4","6":"auto(l4)","7":"4","8":"20","9":"26","10":"r","11":"suv"},{"1":"subaru","2":"forester awd","3":"2.5","4":"2008","5":"4","6":"auto(l4)","7":"4","8":"18","9":"23","10":"p","11":"suv"},{"1":"subaru","2":"impreza awd","3":"2.2","4":"1999","5":"4","6":"auto(l4)","7":"4","8":"21","9":"26","10":"r","11":"subcompact"},{"1":"subaru","2":"impreza awd","3":"2.2","4":"1999","5":"4","6":"manual(m5)","7":"4","8":"19","9":"26","10":"r","11":"subcompact"},{"1":"subaru","2":"impreza awd","3":"2.5","4":"1999","5":"4","6":"manual(m5)","7":"4","8":"19","9":"26","10":"r","11":"subcompact"},{"1":"subaru","2":"impreza awd","3":"2.5","4":"1999","5":"4","6":"auto(l4)","7":"4","8":"19","9":"26","10":"r","11":"subcompact"},{"1":"subaru","2":"impreza awd","3":"2.5","4":"2008","5":"4","6":"auto(s4)","7":"4","8":"20","9":"25","10":"p","11":"compact"},{"1":"subaru","2":"impreza awd","3":"2.5","4":"2008","5":"4","6":"auto(s4)","7":"4","8":"20","9":"27","10":"r","11":"compact"},{"1":"subaru","2":"impreza awd","3":"2.5","4":"2008","5":"4","6":"manual(m5)","7":"4","8":"19","9":"25","10":"p","11":"compact"},{"1":"subaru","2":"impreza awd","3":"2.5","4":"2008","5":"4","6":"manual(m5)","7":"4","8":"20","9":"27","10":"r","11":"compact"},{"1":"toyota","2":"4runner 4wd","3":"2.7","4":"1999","5":"4","6":"manual(m5)","7":"4","8":"15","9":"20","10":"r","11":"suv"},{"1":"toyota","2":"4runner 4wd","3":"2.7","4":"1999","5":"4","6":"auto(l4)","7":"4","8":"16","9":"20","10":"r","11":"suv"},{"1":"toyota","2":"4runner 4wd","3":"3.4","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"15","9":"19","10":"r","11":"suv"},{"1":"toyota","2":"4runner 4wd","3":"3.4","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"15","9":"17","10":"r","11":"suv"},{"1":"toyota","2":"4runner 4wd","3":"4.0","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"16","9":"20","10":"r","11":"suv"},{"1":"toyota","2":"4runner 4wd","3":"4.7","4":"2008","5":"8","6":"auto(l5)","7":"4","8":"14","9":"17","10":"r","11":"suv"},{"1":"toyota","2":"camry","3":"2.2","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"midsize"},{"1":"toyota","2":"camry","3":"2.2","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"21","9":"27","10":"r","11":"midsize"},{"1":"toyota","2":"camry","3":"2.4","4":"2008","5":"4","6":"manual(m5)","7":"f","8":"21","9":"31","10":"r","11":"midsize"},{"1":"toyota","2":"camry","3":"2.4","4":"2008","5":"4","6":"auto(l5)","7":"f","8":"21","9":"31","10":"r","11":"midsize"},{"1":"toyota","2":"camry","3":"3.0","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"toyota","2":"camry","3":"3.0","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"r","11":"midsize"},{"1":"toyota","2":"camry","3":"3.5","4":"2008","5":"6","6":"auto(s6)","7":"f","8":"19","9":"28","10":"r","11":"midsize"},{"1":"toyota","2":"camry solara","3":"2.2","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"21","9":"27","10":"r","11":"compact"},{"1":"toyota","2":"camry solara","3":"2.2","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"compact"},{"1":"toyota","2":"camry solara","3":"2.4","4":"2008","5":"4","6":"manual(m5)","7":"f","8":"21","9":"31","10":"r","11":"compact"},{"1":"toyota","2":"camry solara","3":"2.4","4":"2008","5":"4","6":"auto(s5)","7":"f","8":"22","9":"31","10":"r","11":"compact"},{"1":"toyota","2":"camry solara","3":"3.0","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"18","9":"26","10":"r","11":"compact"},{"1":"toyota","2":"camry solara","3":"3.0","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"r","11":"compact"},{"1":"toyota","2":"camry solara","3":"3.3","4":"2008","5":"6","6":"auto(s5)","7":"f","8":"18","9":"27","10":"r","11":"compact"},{"1":"toyota","2":"corolla","3":"1.8","4":"1999","5":"4","6":"auto(l3)","7":"f","8":"24","9":"30","10":"r","11":"compact"},{"1":"toyota","2":"corolla","3":"1.8","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"24","9":"33","10":"r","11":"compact"},{"1":"toyota","2":"corolla","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"26","9":"35","10":"r","11":"compact"},{"1":"toyota","2":"corolla","3":"1.8","4":"2008","5":"4","6":"manual(m5)","7":"f","8":"28","9":"37","10":"r","11":"compact"},{"1":"toyota","2":"corolla","3":"1.8","4":"2008","5":"4","6":"auto(l4)","7":"f","8":"26","9":"35","10":"r","11":"compact"},{"1":"toyota","2":"land cruiser wagon 4wd","3":"4.7","4":"1999","5":"8","6":"auto(l4)","7":"4","8":"11","9":"15","10":"r","11":"suv"},{"1":"toyota","2":"land cruiser wagon 4wd","3":"5.7","4":"2008","5":"8","6":"auto(s6)","7":"4","8":"13","9":"18","10":"r","11":"suv"},{"1":"toyota","2":"toyota tacoma 4wd","3":"2.7","4":"1999","5":"4","6":"manual(m5)","7":"4","8":"15","9":"20","10":"r","11":"pickup"},{"1":"toyota","2":"toyota tacoma 4wd","3":"2.7","4":"1999","5":"4","6":"auto(l4)","7":"4","8":"16","9":"20","10":"r","11":"pickup"},{"1":"toyota","2":"toyota tacoma 4wd","3":"2.7","4":"2008","5":"4","6":"manual(m5)","7":"4","8":"17","9":"22","10":"r","11":"pickup"},{"1":"toyota","2":"toyota tacoma 4wd","3":"3.4","4":"1999","5":"6","6":"manual(m5)","7":"4","8":"15","9":"17","10":"r","11":"pickup"},{"1":"toyota","2":"toyota tacoma 4wd","3":"3.4","4":"1999","5":"6","6":"auto(l4)","7":"4","8":"15","9":"19","10":"r","11":"pickup"},{"1":"toyota","2":"toyota tacoma 4wd","3":"4.0","4":"2008","5":"6","6":"manual(m6)","7":"4","8":"15","9":"18","10":"r","11":"pickup"},{"1":"toyota","2":"toyota tacoma 4wd","3":"4.0","4":"2008","5":"6","6":"auto(l5)","7":"4","8":"16","9":"20","10":"r","11":"pickup"},{"1":"volkswagen","2":"gti","3":"2.0","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"compact"},{"1":"volkswagen","2":"gti","3":"2.0","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"19","9":"26","10":"r","11":"compact"},{"1":"volkswagen","2":"gti","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"volkswagen","2":"gti","3":"2.0","4":"2008","5":"4","6":"auto(s6)","7":"f","8":"22","9":"29","10":"p","11":"compact"},{"1":"volkswagen","2":"gti","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"17","9":"24","10":"r","11":"compact"},{"1":"volkswagen","2":"jetta","3":"1.9","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"33","9":"44","10":"d","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.0","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.0","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"19","9":"26","10":"r","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.0","4":"2008","5":"4","6":"auto(s6)","7":"f","8":"22","9":"29","10":"p","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.5","4":"2008","5":"5","6":"auto(s6)","7":"f","8":"21","9":"29","10":"r","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.5","4":"2008","5":"5","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.8","4":"1999","5":"6","6":"auto(l4)","7":"f","8":"16","9":"23","10":"r","11":"compact"},{"1":"volkswagen","2":"jetta","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"17","9":"24","10":"r","11":"compact"},{"1":"volkswagen","2":"new beetle","3":"1.9","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"35","9":"44","10":"d","11":"subcompact"},{"1":"volkswagen","2":"new beetle","3":"1.9","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"29","9":"41","10":"d","11":"subcompact"},{"1":"volkswagen","2":"new beetle","3":"2.0","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"r","11":"subcompact"},{"1":"volkswagen","2":"new beetle","3":"2.0","4":"1999","5":"4","6":"auto(l4)","7":"f","8":"19","9":"26","10":"r","11":"subcompact"},{"1":"volkswagen","2":"new beetle","3":"2.5","4":"2008","5":"5","6":"manual(m5)","7":"f","8":"20","9":"28","10":"r","11":"subcompact"},{"1":"volkswagen","2":"new beetle","3":"2.5","4":"2008","5":"5","6":"auto(s6)","7":"f","8":"20","9":"29","10":"r","11":"subcompact"},{"1":"volkswagen","2":"passat","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"midsize"},{"1":"volkswagen","2":"passat","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"midsize"},{"1":"volkswagen","2":"passat","3":"2.0","4":"2008","5":"4","6":"auto(s6)","7":"f","8":"19","9":"28","10":"p","11":"midsize"},{"1":"volkswagen","2":"passat","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"21","9":"29","10":"p","11":"midsize"},{"1":"volkswagen","2":"passat","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"midsize"},{"1":"volkswagen","2":"passat","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"midsize"},{"1":"volkswagen","2":"passat","3":"3.6","4":"2008","5":"6","6":"auto(s6)","7":"f","8":"17","9":"26","10":"p","11":"midsize"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -239,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(mpg) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n_missing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -454,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="mpg-and-a-type-of-cars">MPG and a Type of Cars</h2>
 <p>The following boxplot shows how the distribution of highway MPG (<code>hwy</code>) varies by a type of cars (<code>class</code>) :blue_car: :truck: :minibus:.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy, <span class="at">fill =</span> class),</span>
@@ -462,7 +501,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Class"</span>, <span class="at">y =</span> <span class="st">"Highway</span><span class="sc">\n</span><span class="st">MPG"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="hw_2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="hw_2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><br><br></p>
@@ -475,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="q2a.">Q2a.</h2>
 <p>Below is the data.frame for Q2a:</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hdi_corruption <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'https://bcdanl.github.io/data/hdi_corruption.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -493,7 +536,7 @@ dbl (3): year, cpi, hdi
 </div>
 <p><em>Answer</em>:</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>country_list<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Argentina"</span>, <span class="st">"China"</span>, <span class="st">"Egypt"</span>, <span class="st">"Greece"</span>, <span class="st">"South Africa"</span>, <span class="st">"United States"</span>, <span class="st">"Germany"</span>, <span class="st">"Singapore"</span>, <span class="st">"Norway"</span>, <span class="st">"Senegal"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -518,9 +561,13 @@ dbl (3): year, cpi, hdi
 <pre><code>Warning: Removed 24 rows containing missing values (`geom_text_repel()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="hw_2_files/figure-html/hdi-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="hw_2_files/figure-html/hdi-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
 </div>
-<details>
+</div>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># problems:points larger and slightly transparent, </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -550,7 +597,7 @@ dbl (3): year, cpi, hdi
 \]</span></p>
 <p><em>Answer</em>:</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/labor_supply (1)/labor_supply.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -563,7 +610,7 @@ dbl (5): YEAR, ASECWT, SEX, LABFORCE, NCHLT5
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b <span class="sc">|&gt;</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(LABFORCE <span class="sc">!=</span> <span class="dv">0</span>)</span>
@@ -582,7 +629,7 @@ dbl (5): YEAR, ASECWT, SEX, LABFORCE, NCHLT5
 <pre><code>`summarise()` has grouped output by 'has_children', 'SEX'. You can override
 using the `.groups` argument.</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b_sum_2022 <span class="ot">&lt;-</span> b_sum <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(YEAR <span class="sc">==</span> <span class="dv">2022</span>)</span>
@@ -599,12 +646,16 @@ using the `.groups` argument.</code></pre>
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>b_graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="hw_2_files/figure-html/labor-supply-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="hw_2_files/figure-html/labor-supply-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><br><br></p>
@@ -613,7 +664,7 @@ using the `.groups` argument.</code></pre>
 <h2 class="anchored" data-anchor-id="q2c">Q2c</h2>
 <p>Below is the data.frame for Q2c:</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggcorrplot")</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot) <span class="co"># to create correlation heatmaps using ggcorrplot()</span></span>
@@ -637,7 +688,7 @@ lgl  (6): promo, childrenUnder6, children6to17, microwave, dishwasher, singl...
 <li>You can start with the data.frame, <code>beer_dummies</code>:</li>
 </ul>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>beer_dummies <span class="ot">&lt;-</span> beer_mkt <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>hh, <span class="sc">-</span>market) </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> beer_dummies,</span>
@@ -680,7 +731,7 @@ lgl  (6): promo, childrenUnder6, children6to17, microwave, dishwasher, singl...
 </ul>
 <p><em>Answer</em>:</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>beer_dummies <span class="ot">&lt;-</span> beer_mkt <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(market <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ALBANY"</span>, <span class="st">"BUFFALO-ROCHESTER"</span>, <span class="st">"URBAN NY"</span>, <span class="st">"SUBURBAN NY"</span>, <span class="st">"EXURBAN NY"</span>, <span class="st">"RURAL NEW YORK"</span>, <span class="st">"SYRACUSE"</span>) ) <span class="sc">|&gt;</span> </span>
@@ -717,9 +768,13 @@ lgl  (6): promo, childrenUnder6, children6to17, microwave, dishwasher, singl...
 <span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"inch"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="hw_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="hw_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details>
+</div>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#color changed, transparent lines- maybe color effect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -777,6 +832,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -845,13 +927,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -981,10 +1065,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -994,8 +1095,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1007,7 +1117,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1051,6 +1284,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1076,6 +1310,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1145,21 +1405,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)   <span class="co"># a better summary of data.frame</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)  <span class="co"># scales for ggplot</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)  <span class="co"># additional ggplot themes</span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hrbrthemes) <span class="co"># additional ggplot themes and color pallets</span></span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify) <span class="co"># to create regression-related plots</span></span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot) <span class="co"># to create correlation heatmaps</span></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fastDummies) <span class="co"># to create dummy variables</span></span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>()) <span class="co"># setting the minimal theme for ggplot</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="in">library(gapminder)</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="in">library(skimr)   # a better summary of data.frame</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="in">library(scales)  # scales for ggplot</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggthemes)  # additional ggplot themes</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="in">library(hrbrthemes) # additional ggplot themes and color pallets</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="in">library(lubridate)</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggridges)</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggrepel)</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggfortify) # to create regression-related plots</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggcorrplot) # to create correlation heatmaps</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="in">library(fastDummies) # to create dummy variables</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_minimal()) # setting the minimal theme for ggplot</span></span>
 <span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
@@ -1216,7 +1476,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;&lt;br&gt;</span>
 <span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a><span class="fu"># Question 2</span></span>
 <span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a></span>
@@ -1235,27 +1495,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>*Answer*:</span>
 <span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r hdi}</span></span>
-<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
-<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-width: 9</span></span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-height: 7</span></span>
 <span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a>country_list<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Argentina"</span>, <span class="st">"China"</span>, <span class="st">"Egypt"</span>, <span class="st">"Greece"</span>, <span class="st">"South Africa"</span>, <span class="st">"United States"</span>, <span class="st">"Germany"</span>, <span class="st">"Singapore"</span>, <span class="st">"Norway"</span>, <span class="st">"Senegal"</span>)</span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a><span class="in">country_list&lt;- c("Argentina", "China", "Egypt", "Greece", "South Africa", "United States", "Germany", "Singapore", "Norway", "Senegal")</span></span>
 <span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a>hdi_corruption <span class="ot">&lt;-</span> hdi_corruption <span class="sc">|&gt;</span> </span>
-<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">ifelse</span>(country <span class="sc">%in%</span> country_list, country, <span class="st">""</span>))</span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a><span class="in">hdi_corruption &lt;- hdi_corruption |&gt; </span></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(year == 2014) |&gt; </span></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(country = ifelse(country %in% country_list, country, ""))</span></span>
 <span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span><span class="fu">ggplot</span>(hdi_corruption, <span class="fu">aes</span>(<span class="at">x=</span>cpi, <span class="at">y=</span>hdi))<span class="sc">+</span> <span class="fu">geom_point</span>((<span class="fu">aes</span>(<span class="at">color =</span> region, <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)))<span class="sc">+</span></span>
-<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">log</span>(x), <span class="at">method =</span> lm)<span class="sc">+</span></span>
-<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)<span class="sc">+</span></span>
-<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> country)) <span class="sc">+</span></span>
-<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Region"</span>, <span class="at">x =</span> <span class="st">"Corruption Perceptions Index, 2014 (100 = least corrupt)"</span>, <span class="at">y =</span> <span class="st">"Human Development Index, 2014 (1.0 = most developed"</span> )</span>
-<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(c)</span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a><span class="in">c &lt;-ggplot(hdi_corruption, aes(x=cpi, y=hdi))+ geom_point((aes(color = region, size = 0.6, alpha = 0.5)))+</span></span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_smooth(se=FALSE, formula = y ~ log(x), method = lm)+</span></span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a><span class="in">  theme(legend.position = "top")+</span></span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_text_repel(aes(label = country)) +</span></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(color = "Region", x = "Corruption Perceptions Index, 2014 (100 = least corrupt)", y = "Human Development Index, 2014 (1.0 = most developed" )</span></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a><span class="in">plot(c)</span></span>
 <span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a><span class="co"># problems:points larger and slightly transparent, </span></span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a><span class="in"># problems:points larger and slightly transparent, </span></span>
 <span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;&lt;br&gt;</span>
 <span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## Q2b</span></span>
 <span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a></span>
@@ -1285,41 +1545,41 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a>*Answer*:</span>
 <span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{r labor-supply}</span></span>
-<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 9</span></span>
-<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-width: 9</span></span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-height: 7</span></span>
 <span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/labor_supply (1)/labor_supply.csv"</span>)</span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="in">b&lt;- read_csv("C:/Users/Alexis Kruzicki/OneDrive/Documents/2023-24/DANL_399/labor_supply (1)/labor_supply.csv")</span></span>
 <span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b <span class="sc">|&gt;</span> </span>
-<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(LABFORCE <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a><span class="in">b &lt;- b |&gt; </span></span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(LABFORCE != 0)</span></span>
 <span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a>b<span class="sc">$</span>has_children <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(b<span class="sc">$</span>NCHLT5 <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"No Child Under Age 5 in Household"</span>, <span class="st">"Having Children Under Age 5 in Household"</span>)</span>
-<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a>b<span class="sc">$</span>in_labor_force <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(b<span class="sc">$</span>LABFORCE <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a>b<span class="sc">$</span>SEX <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(b<span class="sc">$</span>SEX <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>)</span>
+<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a><span class="in">b$has_children &lt;- ifelse(b$NCHLT5 == 0, "No Child Under Age 5 in Household", "Having Children Under Age 5 in Household")</span></span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a><span class="in">b$in_labor_force &lt;- ifelse(b$LABFORCE == 2, 1, 0)</span></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a><span class="in">b$SEX &lt;- ifelse(b$SEX == 1, "Male", "Female")</span></span>
 <span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a>b_sum <span class="ot">&lt;-</span> b <span class="sc">|&gt;</span></span>
-<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(has_children, SEX, YEAR)<span class="sc">|&gt;</span></span>
-<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">LPR =</span> (<span class="fu">sum</span>(ASECWT <span class="sc">*</span> in_labor_force))<span class="sc">/</span><span class="fu">sum</span>(ASECWT) ) <span class="sc">|&gt;</span></span>
-<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">has_children =</span> <span class="fu">factor</span>(has_children,</span>
-<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a>                               <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Having Children Under Age 5 in Household"</span>,  <span class="st">"No Child Under Age 5 in Household"</span>)))</span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a><span class="in">b_sum &lt;- b |&gt;</span></span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a><span class="in">  group_by(has_children, SEX, YEAR)|&gt;</span></span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a><span class="in">  summarise(LPR = (sum(ASECWT * in_labor_force))/sum(ASECWT) ) |&gt;</span></span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(has_children = factor(has_children,</span></span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a><span class="in">                               levels = c("Having Children Under Age 5 in Household",  "No Child Under Age 5 in Household")))</span></span>
 <span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>b_sum_2022 <span class="ot">&lt;-</span> b_sum <span class="sc">|&gt;</span> </span>
-<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(YEAR <span class="sc">==</span> <span class="dv">2022</span>)</span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a><span class="in">b_sum_2022 &lt;- b_sum |&gt; </span></span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(YEAR == 2022)</span></span>
 <span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a>b_graph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(b_sum, <span class="fu">aes</span>(<span class="at">x=</span> YEAR, <span class="at">y=</span> LPR))<span class="sc">+</span></span>
-<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color=</span> <span class="fu">factor</span>(SEX), <span class="at">size=</span> <span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label_repel</span>(<span class="at">data =</span> b_sum_2022, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">as.character</span>(SEX)), <span class="at">box.padding =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1982</span>, <span class="dv">2022</span>, <span class="dv">4</span>))<span class="sc">+</span> </span>
-<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)<span class="sc">+</span></span>
-<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(has_children <span class="sc">~</span>.)<span class="sc">+</span></span>
-<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">x=</span> <span class="st">"Year"</span>, <span class="at">y=</span> <span class="st">"Labor Force Participation Rate"</span>, <span class="at">Title =</span> <span class="st">"Fertility and Labor Supply in the U.S."</span>, <span class="at">subtitle=</span> <span class="st">"1982-2022"</span>, <span class="at">caption=</span> <span class="st">"Data:IPUMS-CPS, University of Minnesota, www.jpums.org"</span> )</span>
-<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a>b_graph</span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a><span class="in">b_graph &lt;- ggplot(b_sum, aes(x= YEAR, y= LPR))+</span></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(show.legend = FALSE, aes(color= factor(SEX), size= 1))+</span></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_label_repel(data = b_sum_2022, aes(label = as.character(SEX)), box.padding = 2)+</span></span>
+<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_x_continuous(breaks = seq(1982, 2022, 4))+ </span></span>
+<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(labels = scales::percent)+</span></span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a><span class="in">  facet_wrap(has_children ~.)+</span></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="in">  labs( x= "Year", y= "Labor Force Participation Rate", Title = "Fertility and Labor Supply in the U.S.", subtitle= "1982-2022", caption= "Data:IPUMS-CPS, University of Minnesota, www.jpums.org" )</span></span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="in">b_graph</span></span>
 <span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;&lt;br&gt;</span>
 <span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a><span class="fu">## Q2c</span></span>
 <span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a></span>
@@ -1434,12 +1694,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Powered with GitHub and Quarto<br>© Alexis Kruzciki, 2024</div>
+    <div class="nav-footer-center">
+<p>Powered with GitHub and Quarto<br>© Alexis Kruzciki, 2024</p>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

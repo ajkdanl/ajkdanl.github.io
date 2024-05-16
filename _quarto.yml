@@ -9,6 +9,8 @@ website:
     left:
       - text: Project
         href: project.qmd
+      - text: Dashboard
+        href: hw6/hw6.qmd
       - text: Blog
         href: blog-listing.qmd
             

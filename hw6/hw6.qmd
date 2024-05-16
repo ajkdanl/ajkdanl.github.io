@@ -1,0 +1,86 @@
+---
+title: Gapminder
+format: 
+  dashboard:
+    orientation: columns
+---
+
+```{r}
+library(tidyverse)
+library(DT)
+df<-read_csv("data_clean.csv")
+
+frq <- df|>
+  filter(str_detect(major, "Business"))|>
+  nrow()
+```
+
+# Financial Literacy Score
+
+## Column {width="24%"}
+
+```{r}
+df |> 
+  datatable()
+```
+
+## Column {width="26%"}
+
+```{r}
+#| content: valuebox
+#| title: "Financial Literacy Max Score"
+
+list(
+  icon = "pencil-square",
+  color = "danger",
+  value = max(df$score)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Max Score"
+
+list(
+  icon = "person-circle",
+  color = "primary",
+  value = frq
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Mean Score"
+
+list(
+  icon = "piggy-bank",
+  color = "warning",
+  value = mean(df$score)
+)
+```
+
+## Column {width="60%"}
+
+```{r}
+#| title: Self Evaluation vs. Score
+
+df |> 
+  ggplot(aes(x = self_eval, y = score)) +
+  geom_point(alpha = .2) +
+  geom_smooth() +
+  theme_minimal()
+```
+
+```{r}
+#| title:  How does the Relationship between Self Evaluation and Score Vary by Major?
+
+df |> 
+  ggplot(aes(x = self_eval, y = score)) +
+  geom_point(alpha = .2) +
+  geom_smooth() +
+  facet_wrap(major ~ .) +
+  theme_minimal()
+```
+
+
+
